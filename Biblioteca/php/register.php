@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'config.php';
+require_once '../includes/config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre_completo = filter_input(INPUT_POST, 'nombre_completo', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contrasena = $_POST['contrasena'];
 
     if (empty($nombre_completo) || empty($usuario) || empty($email) || empty($contrasena)) {
-        echo "Por favor, complete todos los campos. <a href='register.html'>Volver</a>";
+        echo "Por favor, complete todos los campos. <a href='../register.html'>Volver</a>";
         exit;
     }
 
@@ -19,9 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("ss", $usuario, $email);
         $stmt->execute();
         $stmt->store_result();
-        
+
         if ($stmt->num_rows > 0) {
-            echo "El usuario o correo electrónico ya está registrado. <a href='register.html'>Intentar de nuevo</a>";
+            echo "El usuario o correo electrónico ya está registrado. <a href='../register.html'>Intentar de nuevo</a>";
             $stmt->close();
             exit;
         }
@@ -32,13 +32,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Corregido: 'Usuarios' con Mayúscula
     $sql_insert = "INSERT INTO Usuarios (usuario, email, contrasena, nombre_completo) VALUES (?, ?, ?, ?)";
-    
+
     if ($stmt = $conexion->prepare($sql_insert)) {
         $stmt->bind_param("ssss", $usuario, $email, $password_hash, $nombre_completo);
-        
+
         if ($stmt->execute()) {
             echo "<h1>¡Registro exitoso!</h1>";
-            echo "<p>Ahora puedes <a href='index.html'>iniciar sesión</a>.</p>";
+            echo "<p>Ahora puedes <a href='../index.php'>iniciar sesión</a>.</p>";
         } else {
             echo "Error al registrar el usuario: " . $stmt->error;
         }
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Error en la preparación de la consulta: " . $conexion->error;
     }
-    
+
     $conexion->close();
 }
 ?>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'config.php';
+require_once '../includes/config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
@@ -23,14 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['loggedin'] = true;
                 $_SESSION['id'] = $id_usuario;
                 $_SESSION['nombre'] = $nombre_completo;
-                header("Location: dashboard.php");
+                header("Location: ../dashboard.php");
                 exit;
             } else {
-                header("Location: index.php?error=1"); // Error: Contraseña mal
+                header("Location: ../index.php?error=1"); // Error: Contraseña mal
                 exit;
             }
         } else {
-            header("Location: index.php?error=2"); // Error: Usuario no existe
+            header("Location: ../index.php?error=2"); // Error: Usuario no existe
             exit;
         }
         $stmt->close();

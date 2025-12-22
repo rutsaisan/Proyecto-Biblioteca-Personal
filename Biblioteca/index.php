@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Biblioteca Personal</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="assets/css/estilo.css">
     <style>
         /* Adaptamos la letra del error al estilo Quicksand */
         .error-message {
@@ -18,16 +19,17 @@
         }
     </style>
 </head>
+
 <body>
     <div class="main-container">
         <div class="logo-container">
-            <img src="img/logo.png" alt="Logo" class="logo">
+            <img src="assets/img/logo.png" alt="Logo" class="logo">
         </div>
         <div class="title-container">
             <h1>Mi Biblioteca Personal</h1>
         </div>
 
-        <form action="login.php" method="POST" class="login-form">
+        <form action="php/login.php" method="POST" class="login-form">
             <input type="email" name="email" placeholder="Correo..." required>
             <input type="password" name="contrasena" placeholder="Contraseña..." required>
 
@@ -45,4 +47,5 @@
         </div>
     </div>
 </body>
+
 </html>
