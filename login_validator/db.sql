@@ -49,24 +49,6 @@ CREATE TABLE Libros (
     FOREIGN KEY (id_categoria) REFERENCES Categorias(id_categoria)
 );
 
-CREATE TABLE Ejemplares (
-    id_ejemplar INT PRIMARY KEY AUTO_INCREMENT,
-    id_libro INT,
-    estado ENUM('Disponible', 'Prestado', 'En Reparacion') DEFAULT 'Disponible',
-    FOREIGN KEY (id_libro) REFERENCES Libros(id_libro)
-);
-
-CREATE TABLE Prestamos (
-    id_prestamo INT PRIMARY KEY AUTO_INCREMENT,
-    id_usuario INT,
-    id_ejemplar INT,
-    fecha_salida DATETIME DEFAULT CURRENT_TIMESTAMP,
-    fecha_devolucion_esperada DATE,
-    fecha_entrega_real DATETIME,
-    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario),
-    FOREIGN KEY (id_ejemplar) REFERENCES Ejemplares(id_ejemplar)
-);
-
 CREATE TABLE Coleccion (
     id_coleccion INT PRIMARY KEY AUTO_INCREMENT,
     id_usuario INT NOT NULL,

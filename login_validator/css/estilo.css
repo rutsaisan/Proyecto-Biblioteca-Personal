@@ -23,6 +23,11 @@ html {
     box-sizing: border-box;
 }
 
+.main-container.wide-container {
+    max-width: 1000px;
+    /* Allow wider layout for book card */
+}
+
 .logo-container {
     margin-bottom: 20px;
 }
