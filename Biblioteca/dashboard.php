@@ -48,6 +48,13 @@ $nombre_usuario = htmlspecialchars($_SESSION['nombre']);
             display: inline-block;
             margin-top: 20px;
         }
+         .login-biblioteca {
+            color: #4d0955ff;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 20px;
+        }
     </style>
 </head>
 
@@ -60,6 +67,8 @@ $nombre_usuario = htmlspecialchars($_SESSION['nombre']);
         <div class="welcome-container">
             <h1>¡Hola, <?php echo $nombre_usuario; ?>!</h1>
             <p>Tu contraseña es correcta. Bienvenido a tu biblioteca.</p>
+            <a href="feed.php" class="login-biblioteca">Ir a mi biblioteca</a>
+            <p>o</p>
             <a href="php/logout.php" class="logout-link">Cerrar Sesión</a>
         </div>
     </div>

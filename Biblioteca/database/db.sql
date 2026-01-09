@@ -59,7 +59,7 @@ CREATE TABLE Coleccion (
     precio DECIMAL(10, 2),       -- Para 'Deseado'
     capitulo_actual INT,         -- Para 'Leyendo'
     resena TEXT,                 -- Para 'Leido' (Opcional)
-    valoracion INT CHECK (valoracion BETWEEN 1 AND 5), -- Para 'Leido'
+    valoracion INT CHECK (valoracion BETWEEN 0 AND 5), -- Para 'Leido'
     FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario) ON DELETE CASCADE,
     FOREIGN KEY (id_libro) REFERENCES Libros(id_libro) ON DELETE CASCADE,
     UNIQUE KEY (id_usuario, id_libro) -- Evitar duplicados del mismo libro para un usuario
@@ -83,3 +83,6 @@ GRANT ALL PRIVILEGES ON `biblioteca_personal`.*
 TO 'ruthydomi'@'%';
 -- recarga la tabla de privilegios
 FLUSH PRIVILEGES;
+
+ALTER TABLE Libros ADD COLUMN portada VARCHAR(255) DEFAULT NULL;
+ALTER TABLE Libros ADD COLUMN precio DECIMAL(6, 2) DEFAULT NULL;
