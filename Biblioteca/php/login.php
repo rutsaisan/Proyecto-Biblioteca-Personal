@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $contrasena = $_POST['contrasena'];
 
-    // Consulta con los nombres exactos de tu base de datos
+    // Consulta con los nombres exactos de la  base de datos
     $sql = "SELECT id_usuario, contrasena, nombre_completo FROM Usuarios WHERE email = ?";
 
     if ($stmt = $conexion->prepare($sql)) {
